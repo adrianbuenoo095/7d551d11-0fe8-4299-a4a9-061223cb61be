@@ -1,10 +1,10 @@
 import SearchIcon from "@mui/icons-material/Search";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
 import InputBase from "@mui/material/InputBase";
 import Toolbar from "@mui/material/Toolbar";
 import { alpha, styled } from "@mui/material/styles";
+import { MuiBadge } from "./MuiBadge";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -53,13 +53,6 @@ export default function SearchAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          ></IconButton>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -69,6 +62,7 @@ export default function SearchAppBar() {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
+          <MuiBadge />
         </Toolbar>
       </AppBar>
     </Box>
