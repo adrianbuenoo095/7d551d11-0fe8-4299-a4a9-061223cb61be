@@ -1,12 +1,16 @@
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import { Badge, Stack } from "@mui/material";
+import { Badge, IconButton } from "@mui/material";
 
 export const MuiBadge = () => {
   return (
-    <Stack spacing={2} direction="row">
+    <IconButton
+      aria-label="cart"
+      //   onClick={handleMenu}
+      color="inherit"
+    >
       <Badge badgeContent={4} color="secondary">
         <ShoppingCartOutlinedIcon />
       </Badge>
-    </Stack>
+    </IconButton>
   );
 };
