@@ -1,13 +1,16 @@
+import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { useEffect, useState } from "react";
 import "./App.scss";
 import SearchAppBar from "./components/SearchAppBar";
 
 interface EventProps {
-  _id: string;
+  id: string;
   title: string;
   flyerFront: string;
   startTime: string;
   endTime: string;
+  userProfile: string;
   venue: {
     id: string;
     name: string;
@@ -33,18 +36,36 @@ function App() {
   return (
     <div className="App">
       <SearchAppBar />
-      <div className="Events-galllery">
+      <div className="events-gallery">
         {events.map((event) => (
-          <div className="event-item" key={event._id}>
-            <div>{event.title}</div>
-            <img src={event.flyerFront} alt="Event" />
-            <div>{event.venue.name}</div>
-            <div>{event.startTime}</div>
-            <div>{event.endTime}</div>
+          <div className="event-card" key={event.id}>
+            <div className="user-profile">
+              <img src={event.userProfile} alt="User" />
+              <span>{event.title}</span>
+            </div>
+            <div className="event-image-container">
+              <img
+                className="event-image"
+                src={event.flyerFront}
+                alt="images"
+              />
+            </div>
+            <div className="event-details">
+              <div className="event-location">
+                <div>
+                  <LocationOnIcon />
+                </div>
+                <div>{event.venue.name}</div>
+              </div>
+              <div className="event-date">
+                <div>{event.startTime}</div>
+                <div>{event.endTime}</div>
+              </div>
+            </div>
+            <AddCircleOutlinedIcon className="add-icon" />
           </div>
         ))}
       </div>
-      {/* <MenuAppBar /> */}
     </div>
   );
 }
