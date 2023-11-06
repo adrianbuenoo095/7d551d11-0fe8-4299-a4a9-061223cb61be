@@ -62,6 +62,7 @@ export default function SearchAppBar() {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
+          <Box sx={{ flexGrow: 1 }} />
           <MuiBadge />
         </Toolbar>
       </AppBar>
