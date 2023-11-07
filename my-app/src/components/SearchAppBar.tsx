@@ -4,7 +4,9 @@ import Box from "@mui/material/Box";
 import InputBase from "@mui/material/InputBase";
 import Toolbar from "@mui/material/Toolbar";
 import { alpha, styled } from "@mui/material/styles";
+import { useContext } from "react";
 import { MuiBadge } from "./MuiBadge";
+import { SearchContext } from "./SearchContext";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -49,6 +51,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar() {
+  const { searchQuery, setSearchQuery } = useContext(SearchContext);
+
+  const handleSearchChange = (Event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(Event.target.value);
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -60,6 +67,7 @@ export default function SearchAppBar() {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
+              onChange={handleSearchChange}
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />

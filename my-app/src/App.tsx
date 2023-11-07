@@ -1,12 +1,15 @@
 import "./App.scss";
 import Card from "./components/Card";
 import SearchAppBar from "./components/SearchAppBar";
+import { SearchProvider } from "./components/SearchContext";
 
 function App() {
   return (
     <div className="App">
-      <SearchAppBar />
-      <Card />
+      <SearchProvider>
+        <SearchAppBar />
+        <Card />
+      </SearchProvider>
     </div>
   );
 }

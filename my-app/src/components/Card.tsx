@@ -1,6 +1,7 @@
 import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { SearchContext } from "./SearchContext";
 
 interface EventProps {
   id: string;
@@ -16,13 +17,17 @@ interface EventProps {
 }
 
 const Card = () => {
+  const { searchQuery } = useContext(SearchContext);
   const [events, setEvents] = useState<EventProps[]>([]);
+  const [originalEvents, setOriganalEvents] = useState<EventProps[]>([]);
+
   const getEvents = async (): Promise<any> => {
     return await fetch(
       "https://teclead-ventures.github.io/data/london-events.json"
     )
       .then((response) => response.json())
       .then((data) => {
+        setOriganalEvents(data);
         setEvents(data);
       });
   };
@@ -30,6 +35,13 @@ const Card = () => {
   useEffect(() => {
     getEvents();
   }, []);
+
+  useEffect(() => {
+    const filteredEvents = originalEvents.filter((event) =>
+      event.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setEvents(filteredEvents);
+  }, [searchQuery, originalEvents]);
 
   return (
     <div className="events-gallery">
