@@ -1,7 +1,7 @@
 import "./App.scss";
 import Card from "./components/Card";
 import SearchAppBar from "./components/SearchAppBar";
-import { SearchProvider } from "./components/SearchContext";
+import { SearchProvider } from "./components/context/SearchContext";
 
 function App() {
   return (

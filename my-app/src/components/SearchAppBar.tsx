@@ -6,7 +6,7 @@ import Toolbar from "@mui/material/Toolbar";
 import { alpha, styled } from "@mui/material/styles";
 import { useContext } from "react";
 import { MuiBadge } from "./MuiBadge";
-import { SearchContext } from "./SearchContext";
+import { SearchContext } from "./context/SearchContext";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",

@@ -1,7 +1,7 @@
 import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { useContext, useEffect, useState } from "react";
-import { SearchContext } from "./SearchContext";
+import { SearchContext } from "./context/SearchContext";
 
 interface EventProps {
   id: string;
