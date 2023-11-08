@@ -60,7 +60,7 @@ const Card = () => {
               <img
                 className="event-image"
                 src={event.flyerFront}
-                alt="images"
+                alt={event.title}
               />
             </div>
             <div className="event-details">
