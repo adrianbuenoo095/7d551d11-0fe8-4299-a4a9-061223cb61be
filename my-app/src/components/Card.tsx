@@ -20,7 +20,7 @@ interface EventProps {
 const Card = () => {
   const { searchQuery } = useContext(SearchContext);
   const [events, setEvents] = useState<EventProps[]>([]);
-  const [originalEvents, setOriganalEvents] = useState<EventProps[]>([]);
+  const [originalEvents, setOriginalEvents] = useState<EventProps[]>([]);
 
   const getEvents = async (): Promise<any> => {
     return await fetch(
@@ -28,7 +28,7 @@ const Card = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setOriganalEvents(data);
+        setOriginalEvents(data);
         setEvents(data);
       });
   };
@@ -73,8 +73,7 @@ const Card = () => {
               </div>
               <div className="event-date">
                 <div>
-                  Starts: {event.date}
-                  {event.startTime}
+                  Starts: {event.date} ,{event.startTime}
                 </div>
                 <div>Ends:{event.endTime}</div>
               </div>
