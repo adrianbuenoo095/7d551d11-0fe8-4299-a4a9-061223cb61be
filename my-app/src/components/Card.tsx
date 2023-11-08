@@ -8,6 +8,7 @@ interface EventProps {
   id: string;
   title: string;
   flyerFront: string;
+  date: string;
   startTime: string;
   endTime: string;
   userProfile: string;
@@ -66,8 +67,8 @@ const Card = () => {
               </div>
             </div>
             <div className="event-date">
-              <div>{event.startTime}</div>
-              <div>{event.endTime}</div>
+              <div>Starts: {event.startTime}</div>
+              <div>Ends:{event.endTime}</div>
             </div>
           </div>
           <AddCircleOutlinedIcon className="add-icon" />
