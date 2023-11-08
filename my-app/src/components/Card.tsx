@@ -1,6 +1,7 @@
 import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { useContext, useEffect, useState } from "react";
+import { showInMapClicked } from "../lib/helper/showInMapClick";
 import { SearchContext } from "./context/SearchContext";
 
 interface EventProps {
@@ -13,6 +14,7 @@ interface EventProps {
   venue: {
     id: string;
     name: string;
+    direction: string;
   };
 }
 
@@ -59,7 +61,9 @@ const Card = () => {
               <div>
                 <LocationOnIcon />
               </div>
-              <div>{event.venue.name}</div>
+              <div onClick={() => showInMapClicked(event.venue.name)}>
+                {event.venue.name}
+              </div>
             </div>
             <div className="event-date">
               <div>{event.startTime}</div>

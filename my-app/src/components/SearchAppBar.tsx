@@ -53,8 +53,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function SearchAppBar() {
   const { setSearchQuery } = useContext(SearchContext);
 
-  const handleSearchChange = (Event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(Event.target.value);
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
   };
   return (
     <Box sx={{ flexGrow: 1 }}>
