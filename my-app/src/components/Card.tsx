@@ -1,5 +1,6 @@
 import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import moment from "moment";
 import { useContext, useEffect, useState } from "react";
 import { showInMapClicked } from "../lib/helper/showInMapClick";
 import { SearchContext } from "./context/SearchContext";
@@ -73,9 +74,9 @@ const Card = () => {
               </div>
               <div className="event-date">
                 <div>
-                  Starts: {event.date} ,{event.startTime}
+                  Starts: {moment(event.date).format("MM.DD.YYYY, LT")} ,
                 </div>
-                <div>Ends:{event.endTime}</div>
+                <div>Ends:{moment(event.endTime).format("MM.DD.YYYY, LT")}</div>
               </div>
             </div>
             <AddCircleOutlinedIcon className="add-icon" />
