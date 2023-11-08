@@ -11,11 +11,9 @@ interface EventProps {
   date: string;
   startTime: string;
   endTime: string;
-  userProfile: string;
   venue: {
     id: string;
     name: string;
-    direction: string;
   };
 }
 
@@ -43,38 +41,49 @@ const Card = () => {
     const filteredEvents = originalEvents.filter((event) =>
       event.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
     setEvents(filteredEvents);
   }, [searchQuery, originalEvents]);
 
   return (
-    <div className="events-gallery">
-      {events.map((event) => (
-        <div className="event-card" key={event.id}>
-          <div className="user-profile">
-            <img src={event.userProfile} alt="User" />
-            <span>{event.title}</span>
-          </div>
-          <div className="event-image-container">
-            <img className="event-image" src={event.flyerFront} alt="images" />
-          </div>
-          <div className="event-details">
-            <div className="event-location">
-              <div>
-                <LocationOnIcon />
+    <>
+      <div>Public Events</div>
+      <div className="events-gallery">
+        {events.map((event) => (
+          <div className="event-card" key={event.id}>
+            <div className="user-profile">
+              <img alt="User" />
+              <span>{event.title}</span>
+            </div>
+            <div className="event-image-container">
+              <img
+                className="event-image"
+                src={event.flyerFront}
+                alt="images"
+              />
+            </div>
+            <div className="event-details">
+              <div className="event-location">
+                <div>
+                  <LocationOnIcon />
+                </div>
+                <div onClick={() => showInMapClicked(event.venue.name)}>
+                  {event.venue.name}
+                </div>
               </div>
-              <div onClick={() => showInMapClicked(event.venue.name)}>
-                {event.venue.name}
+              <div className="event-date">
+                <div>
+                  Starts: {event.date}
+                  {event.startTime}
+                </div>
+                <div>Ends:{event.endTime}</div>
               </div>
             </div>
-            <div className="event-date">
-              <div>Starts: {event.startTime}</div>
-              <div>Ends:{event.endTime}</div>
-            </div>
+            <AddCircleOutlinedIcon className="add-icon" />
           </div>
-          <AddCircleOutlinedIcon className="add-icon" />
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 };
 
