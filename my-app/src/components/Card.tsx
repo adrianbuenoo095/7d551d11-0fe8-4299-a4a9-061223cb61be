@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { showInMapClicked } from "../lib/helper/showInMapClick";
 import { SearchContext } from "./context/SearchContext";
 
-interface EventProps {
+export interface EventProps {
   id: string;
   title: string;
   flyerFront: string;
@@ -19,7 +19,7 @@ interface EventProps {
 }
 
 const Card = () => {
-  const { searchQuery } = useContext(SearchContext);
+  const { searchQuery = "" } = useContext(SearchContext) ?? {};
   const [events, setEvents] = useState<EventProps[]>([]);
   const [originalEvents, setOriginalEvents] = useState<EventProps[]>([]);
 
@@ -40,7 +40,7 @@ const Card = () => {
 
   useEffect(() => {
     const filteredEvents = originalEvents.filter((event) =>
-      event.title.toLowerCase().includes(searchQuery.toLowerCase())
+      event.title.toLowerCase().includes(searchQuery?.toLowerCase())
     );
 
     setEvents(filteredEvents);
