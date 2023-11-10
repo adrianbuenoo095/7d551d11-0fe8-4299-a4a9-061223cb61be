@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { showInMapClicked } from "../lib/helper/showInMapClick";
 import { SearchContext } from "./context/SearchContext";
 
-export interface EventProps {
+interface EventProps {
   id: string;
   title: string;
   flyerFront: string;
