@@ -4,7 +4,8 @@ import Box from "@mui/material/Box";
 import InputBase from "@mui/material/InputBase";
 import Toolbar from "@mui/material/Toolbar";
 import { alpha, styled } from "@mui/material/styles";
-import { useContext } from "react";
+import { useCallback, useContext, useState } from "react";
+import Cart from "./Cart/Cart";
 import { MuiBadge } from "./MuiBadge";
 import { SearchContext } from "./context/SearchContext";
 
@@ -52,7 +53,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const SearchAppBar = () => {
   const { setSearchQuery } = useContext(SearchContext);
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const [openCart, setCartOpen] = useState(false);
+
+  const handleClick = useCallback(() => {
+    setCartOpen((preState) => {
+      return !preState;
+    });
+  }, []);
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery?.(e.target.value);
   };
   return (
@@ -66,11 +75,14 @@ const SearchAppBar = () => {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
-              onChange={handleSearchChange}
+              onChange={handleSearch}
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
-          <MuiBadge />
+          <div onClick={handleClick}>
+            <MuiBadge />
+          </div>
+          {openCart && <Cart />}
         </Toolbar>
       </AppBar>
     </Box>
