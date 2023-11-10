@@ -5,4 +5,4 @@ export interface ISearchContext {
   setSearchQuery: Dispatch<SetStateAction<string>>;
 }
 
-export const SearchContext = createContext<ISearchContext | null>(null!);
+export const SearchContext = createContext<ISearchContext>(null!);

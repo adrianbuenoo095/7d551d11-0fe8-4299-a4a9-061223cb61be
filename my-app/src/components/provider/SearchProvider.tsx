@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { ISearchContext, SearchContext } from "../context/SearchContext";
+import { SearchContext } from "../context/SearchContext";
 
 export interface SearchProviderProps {
   children?: ReactNode;
@@ -7,12 +7,8 @@ export interface SearchProviderProps {
 const SearchProvider = ({ children }: SearchProviderProps) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const contextValue: ISearchContext = {
-    searchQuery,
-    setSearchQuery,
-  };
   return (
-    <SearchContext.Provider value={contextValue}>
+    <SearchContext.Provider value={{ searchQuery, setSearchQuery }}>
       {children}
     </SearchContext.Provider>
   );

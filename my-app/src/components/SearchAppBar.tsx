@@ -51,7 +51,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const SearchAppBar = () => {
-  const { setSearchQuery } = useContext(SearchContext) ?? {};
+  const { setSearchQuery } = useContext(SearchContext);
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery?.(e.target.value);
   };

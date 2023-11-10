@@ -19,7 +19,7 @@ interface EventProps {
 }
 
 const Card = () => {
-  const { searchQuery = "" } = useContext(SearchContext) ?? {};
+  const { searchQuery } = useContext(SearchContext);
   const [events, setEvents] = useState<EventProps[]>([]);
   const [originalEvents, setOriginalEvents] = useState<EventProps[]>([]);
 
