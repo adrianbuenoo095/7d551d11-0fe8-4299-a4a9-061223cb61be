@@ -1,3 +1,5 @@
+import styles from "./Cart.module.scss";
+
 // interface CartProps {
 //   cartEvents: EventProps[];
 //   addToCart: (clickedItem: EventProps) => void;
@@ -7,8 +9,10 @@
 const Cart = () => {
   return (
     <>
-      <div>Your Cart</div>
-      {/* <div>{cartEvents.length === 0 ? <p>No Events in cart.</p> : null}</div> */}
+      <div className={styles.cartContainer}>
+        <div>Your Cart</div>
+        {/* <div>{cartEvents.length === 0 ? <p>No Events in cart.</p> : null}</div> */}
+      </div>
     </>
   );
 };

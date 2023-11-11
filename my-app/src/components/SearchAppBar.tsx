@@ -1,4 +1,6 @@
 import SearchIcon from "@mui/icons-material/Search";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { Badge, IconButton } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import InputBase from "@mui/material/InputBase";
@@ -6,7 +8,6 @@ import Toolbar from "@mui/material/Toolbar";
 import { alpha, styled } from "@mui/material/styles";
 import { useCallback, useContext, useState } from "react";
 import Cart from "./Cart/Cart";
-import { MuiBadge } from "./MuiBadge";
 import { SearchContext } from "./context/SearchContext";
 
 const Search = styled("div")(({ theme }) => ({
@@ -61,6 +62,8 @@ const SearchAppBar = () => {
     });
   }, []);
 
+  console.log(`hello ${handleClick}`);
+
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery?.(e.target.value);
   };
@@ -79,8 +82,12 @@ const SearchAppBar = () => {
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
-          <div onClick={handleClick}>
-            <MuiBadge />
+          <div>
+            <IconButton aria-label="cart" onClick={handleClick} color="inherit">
+              <Badge badgeContent={4} color="secondary">
+                <ShoppingCartOutlinedIcon />
+              </Badge>
+            </IconButton>
           </div>
           {openCart && <Cart />}
         </Toolbar>
