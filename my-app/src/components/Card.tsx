@@ -79,7 +79,13 @@ const Card = () => {
                 <div>Ends:{moment(event.endTime).format("MM.DD.YYYY, LT")}</div>
               </div>
             </div>
-            <AddCircleOutlinedIcon className="add-icon" />
+            <button
+              onClick={() => {
+                console.log("hello my name is adrian ");
+              }}
+            >
+              <AddCircleOutlinedIcon className="add-icon" />
+            </button>
           </div>
         ))}
       </div>

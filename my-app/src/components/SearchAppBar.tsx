@@ -7,7 +7,6 @@ import InputBase from "@mui/material/InputBase";
 import Toolbar from "@mui/material/Toolbar";
 import { alpha, styled } from "@mui/material/styles";
 import { useCallback, useContext, useState } from "react";
-import Cart from "./Cart/Cart";
 import { SearchContext } from "./context/SearchContext";
 
 const Search = styled("div")(({ theme }) => ({
@@ -89,7 +88,7 @@ const SearchAppBar = () => {
               </Badge>
             </IconButton>
           </div>
-          {openCart && <Cart />}
+          {openCart && "hello world"}
         </Toolbar>
       </AppBar>
     </Box>
