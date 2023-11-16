@@ -7,7 +7,7 @@ interface CartProps {
   removeFromCart: (id: number) => void;
 }
 
-const Cart = () => {
+const Cart = ({ cartEvents, addToCart, removeFromCart }: CartProps) => {
   return (
     <>
       <div className={styles.cartContainer}>
