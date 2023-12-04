@@ -1,7 +1,7 @@
 import { EventProps } from "../Card";
 import styles from "./Cart.module.scss";
 
-interface CartProps {
+export interface CartProps {
   cartEvents: EventProps[];
   addToCart: (clickedItem: EventProps) => void;
   removeFromCart: (id: number) => void;

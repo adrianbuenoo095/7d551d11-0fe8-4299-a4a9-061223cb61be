@@ -3,8 +3,8 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import moment from "moment";
 import { useContext, useEffect, useState } from "react";
 import { showInMapClicked } from "../lib/helper/showInMapClick";
+import { useCart } from "./context/CartContext";
 import { SearchContext } from "./context/SearchContext";
-
 export interface EventProps {
   id: string;
   title: string;
@@ -22,7 +22,7 @@ const Card = () => {
   const { searchQuery } = useContext(SearchContext);
   const [events, setEvents] = useState<EventProps[]>([]);
   const [originalEvents, setOriginalEvents] = useState<EventProps[]>([]);
-
+  const { dispatch } = useCart();
   const getEvents = async (): Promise<any> => {
     return await fetch(
       "https://teclead-ventures.github.io/data/london-events.json"
@@ -81,7 +81,8 @@ const Card = () => {
             </div>
             <button
               onClick={() => {
-                console.log("hello my name is adrian ");
+                dispatch({ type: "INCREMENT" }); // Update the cart count
+                console.log("Event added to cart:", event);
               }}
             >
               <AddCircleOutlinedIcon className="add-icon" />

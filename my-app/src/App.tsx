@@ -1,15 +1,23 @@
 import "./App.scss";
 import Card from "./components/Card";
+import Cart, { CartProps } from "./components/Cart/Cart";
 import SearchAppBar from "./components/SearchAppBar";
-import SearchProvider from "./components/provider/SearchProvider";
+import { CartProvider } from "./components/context/CartContext";
+
+const cartProps: CartProps = {
+  cartEvents,
+  addToCart,
+  removeFromCart,
+};
 
 function App() {
   return (
     <div className="App">
-      <SearchProvider>
+      <CartProvider>
         <SearchAppBar />
         <Card />
-      </SearchProvider>
+        <Cart {...cartProps} />
+      </CartProvider>
     </div>
   );
 }

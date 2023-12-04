@@ -54,6 +54,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const SearchAppBar = () => {
   const { setSearchQuery } = useContext(SearchContext);
   const [openCart, setCartOpen] = useState(false);
+  let [count, setCount] = useState(0);
 
   const handleClick = useCallback(() => {
     setCartOpen((preState) => {
@@ -61,11 +62,16 @@ const SearchAppBar = () => {
     });
   }, []);
 
+  const handelIncrease = useCallback(() => {
+    setCount((count) => count + 1);
+  }, []);
+
   console.log(`hello ${handleClick}`);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery?.(e.target.value);
   };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -83,7 +89,11 @@ const SearchAppBar = () => {
           <Box sx={{ flexGrow: 1 }} />
           <div>
             <IconButton aria-label="cart" onClick={handleClick} color="inherit">
-              <Badge badgeContent={4} color="secondary">
+              <Badge
+                badgeContent={count}
+                onClick={handelIncrease}
+                color="secondary"
+              >
                 <ShoppingCartOutlinedIcon />
               </Badge>
             </IconButton>
